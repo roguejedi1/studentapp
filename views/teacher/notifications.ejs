@@ -1,0 +1,19 @@
+<%- include('../partials/header') %>
+    <%- include('../partials/tnav') %>
+        <h1>Notifications</h1>
+
+        <ul>
+    <% if(notifications.length > 0) { %>
+            <% notifications.forEach((notification) => { %>
+                    <li>
+                        <a href="/teacher/view/<%= notification.senderUserId %>">
+                            <%= notification.message %>
+                        </a>
+                    </li>
+                    <% }) %>
+    <% } else { %>
+                <p>No new notificationss</p>
+    <% } %>
+        </ul>
+
+<%- include('../partials/footer') %>
