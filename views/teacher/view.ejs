@@ -1,0 +1,20 @@
+<%- include('../partials/header') %>
+<%- include('../partials/tnav') %>
+    <h1>View Profile</h1>
+
+   <h1><%= student.username %></h1>
+   <p><%= student.email %></p>
+
+<% if(student.followers.some((follower) => follower._id.toString() === currentUser._id.toString())) { %>
+    <form action="/teacher/<%= student._id %>/unfollow" method="POST">
+        <button type="submit">Unfollow</button>
+    </form>
+    <%} else {%>
+        <form action="/teacher/<%= student._id %>/follow" method="POST">
+            <button type="submit">Follow</button>
+        </form>
+    <%} %>
+
+
+
+<%- include('../partials/footer') %>
