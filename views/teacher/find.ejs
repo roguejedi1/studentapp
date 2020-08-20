@@ -1,0 +1,15 @@
+<%- include('../partials/header') %>
+<%- include('../partials/tnav') %>
+    <h1>Find</h1>
+
+    <% student.forEach((student) => { %>
+        <hr>
+        <li>
+            <a href="/teacher/view/<%= student.id %>">
+                <%= student.username %>
+            </a>
+        </li>
+        <hr>
+        <%}); %>
+
+<%- include('../partials/footer') %>
