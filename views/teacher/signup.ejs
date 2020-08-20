@@ -1,0 +1,22 @@
+<%- include('../partials/header') %>
+<%- include('../partials/navbar') %>
+<form action="/teacher/signup" method="POST">
+    <div>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" placeholder="username" required>
+    </div>
+    <div>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="password" required>
+    </div>
+    <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="email"  required>
+    </div>
+    <div>
+        <label for="class">Class Teaching:</label>
+        <input type="text" name="class" id="class" placeholder="class teaching" required>
+    </div>
+    <input type="submit">
+</form>
+<%- include('../partials/footer') %>
