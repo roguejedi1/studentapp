@@ -14,9 +14,9 @@ const methodOverride = require('method-override');
 const User = require('./models/user');
 const Teacher = require('./models/teacher');
 const Student = require('./models/student');
+const Notification = require('./models/notification');
 
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
 const studentRouter = require('./routes/student');
 const teacherRouter = require('./routes/teacher');
 
@@ -123,14 +123,14 @@ app.use(async (req, res, next) => {
   res.locals.currentUser = req.user;
   res.locals.notifications = null;
   if(req.user){
-    let currentUser = await User.findById(req.user._id).populate('notifications');
+    let currentUser = req.user;
+    const currentUserNotifications = await Notification.find({'receiverUserId': req.user._id});
     res.locals.notifications = currentUser.notifications;
   }
   next();
 });
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 app.use('/student', studentRouter);
 app.use('/teacher', teacherRouter);
 
