@@ -3,7 +3,7 @@ const passport = require('passport');
 const mongoose = require('mongoose');
 const Student = require('../models/student');
 // The person sending notifs is the teacher so ref tFollowNotif
-const FollowNotification = require('../models/tFollowNotif');
+const FollowNotification = require('../models/FollowNotif');
 const onlineUsers = require('../onlineUsers');
 const socketApi = require('../socket');
 
@@ -79,7 +79,7 @@ module.exports = {
             let userToUnfollow = await Student.findById(req.params.id).populate('followers').populate('notifications');
             let currentUser = await Teacher.findById(req.user._id).populate('following');
 
-            const newNotificationArray = userToUnfollow.notifications.filter(({ senderUserId, __t }) => (userToUnfollow.toString() !== currentUser._id.toString()) && (__t !== "tFollowNotif"));
+            const newNotificationArray = userToUnfollow.notifications.filter(({ senderUserId, __t }) => (userToUnfollow.toString() !== currentUser._id.toString()) && (__t !== "FollowNotif"));
 
             userToUnfollow.notifications = newNotificationArray;
             await userToUnfollow.followers.remove({ _id: currentUser._id });
