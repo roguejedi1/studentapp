@@ -4,10 +4,14 @@
 
 <ul>
 <% if(notifications.length > 0) { %>
-    <% notifications.forEach((notification) => { %>
+    <% notifications.forEach((notification) => {
+        switch(notification.__t) {
+            case "FollowNotif": %>
             <li>
-               <a href="/student/view/<%= notification.senderUserId %>"><%= notification.message %></a>
+               <a href="/student/view/<%= notification.senderUserId %>"><%= notification.message %> follows</a>
             </li>
+            <% break; %>
+            <% } %>
         <% }) %>
 <% } else { %>
     <p>No new notificationss</p>
