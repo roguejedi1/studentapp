@@ -125,7 +125,9 @@ app.use(async (req, res, next) => {
   if(req.user){
     let currentUser = req.user;
     const currentUserNotifications = await Notification.find({'receiverUserId': req.user._id});
-    res.locals.notifications = currentUser.notifications;
+    res.locals.notifications = currentUserNotifications;
+    // let currentUser = await User.findById(req.user._id).populate("notifications");
+    // res.locals.notifications = currentUser.notifications;
   }
   next();
 });
