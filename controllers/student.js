@@ -82,5 +82,13 @@ module.exports = {
         } catch (err) {
             next(err);
         }
+    },
+    async matchCheck(req, res, next){
+        let currentUser = await Student.findById(req.user._id);
+        let currentUserFollowers = currentUser.followers;
+        let currentUserFollowing = currentUser.following;
+        let mutualFriends = currentUserFollowers.filter((currentUserFollower) => currentUserFollowing.includes(currentUserFollower));
+        let newFriends = await Teacher.find().where('_id').in(mutualFriends).exec();
+        res.render('student/friends', {newFriends});
     }
 }
