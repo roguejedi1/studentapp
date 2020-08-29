@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const ContractSchema = new Schema({
-    subject: String,
+    course: String,
     courseDuration: String,
     teacher: {
         type: Schema.Types.ObjectId,
