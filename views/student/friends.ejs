@@ -1,0 +1,11 @@
+<%- include('../partials/header') %>
+<%- include('../partials/nav') %>
+
+<h1>Friends</h1>
+<% newFriends.forEach((mutual) => { %>
+    <p>Name: <%= mutual.username %></p>
+    <p>Email: <%= mutual.email %></p>
+    <p>Course: <%= mutual.classTeaching %></p>
+<% }) %>
+
+<%- include('../partials/footer') %>
