@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const {getRegister, postRegister, getLogin, postLogin, getLogout, findTeacher, viewProfile, getNotifications, followUser, unfollowUser} = require('../controllers/student');
+const {getRegister, postRegister, getLogin, postLogin, getLogout, findTeacher, viewProfile, getNotifications, followUser, unfollowUser, matchCheck} = require('../controllers/student');
 
 router.get('/signup', getRegister);
 
@@ -15,6 +15,8 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/find', findTeacher);
+
+router.get('/friends', matchCheck);
 
 router.get('/view/:id', viewProfile);
 
