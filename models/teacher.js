@@ -15,10 +15,10 @@ const TeacherSchema = User.discriminator(
             type: Schema.Types.ObjectId,
             ref: 'Student'
         }],
-        notifications: [{
-            type: Schema.Types.ObjectId,
-            ref: 'SNotification'
-        }]
+        // notifications: [{
+        //     type: Schema.Types.ObjectId,
+        //     ref: 'Notification'
+        // }]
     })
 )
 
