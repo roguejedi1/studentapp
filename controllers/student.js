@@ -58,6 +58,7 @@ module.exports = {
             });
             await userToFollow.followers.addToSet(currentUser);
             await userToFollow.notifications.push(newNotificiation);
+            console.log(userToFollow.notifications);
             await userToFollow.save();
             await currentUser.following.addToSet(userToFollow);
             await currentUser.save();
