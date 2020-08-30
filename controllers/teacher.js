@@ -44,8 +44,9 @@ module.exports = {
         let student = await Student.findById(req.params.id);
         res.render('teacher/view', {student});
     },
-    getNotifications(req, res, next){
-        res.render('teacher/notifications');
+    async getNotifications(req, res, next){
+        let teacher = await Teacher.findById(req.user._id).populate('notifications');
+        res.render('teacher/notifications', {teacher});
     },
     async followUser(req, res, next){
         try {
